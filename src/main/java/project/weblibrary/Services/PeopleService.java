@@ -33,4 +33,11 @@ public class PeopleService {
     public void deletePersonById(Long id){
         personRepository.deleteById(id);
     }
+
+    public void editPersonById(Long id, String name, Integer birthday){
+        PersonEntity editedPerson = getPersonById(id);
+        editedPerson.setName(name);
+        editedPerson.setBirthday(birthday);
+        personRepository.save(editedPerson);
+    }
 }

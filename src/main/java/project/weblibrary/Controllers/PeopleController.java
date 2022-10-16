@@ -42,6 +42,17 @@ public class PeopleController {
         return "personPage";
     }
 
+    @GetMapping("/{id}/edit")
+    public String editPersonPage(@PathVariable("id") Long id, Model model){
+        model.addAttribute("person", peopleService.getPersonById(id));
+        return "editPerson";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editPerson(@PathVariable("id") Long id, @ModelAttribute("person") PersonEntity personEntity){
+        peopleService.editPersonById(id, personEntity.getName(), personEntity.getBirthday());
+        return "redirect:/people/{id}";
+    }
     @DeleteMapping("/{id}")
     public String deletePerson(@PathVariable("id") Long id){
         peopleService.deletePersonById(id);
