@@ -31,7 +31,7 @@ public class PeopleController {
     }
 
     @PostMapping("/new")
-    public String addPerson(@ModelAttribute("person") PersonEntity personEntity, Model model){
+    public String newPerson(@ModelAttribute("person") PersonEntity personEntity, Model model){
         peopleService.addPerson(personEntity);
         return "redirect:/people/new";
     }
