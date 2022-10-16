@@ -6,8 +6,8 @@
 </head>
 <body>
 <form th:action="@{/people/new}" th:object="${person}" th:method="post">
-    Введите ФИО: <input type="text" th:field="*{name}"><br><br>
-    Введите год рождения: <input type="text" th:field="*{birthday}"><br><br>
+    Введите ФИО: <input type="text" th:field="*{name}"><br>
+    Введите год рождения: <input type="number" th:field="*{birthday}"><br>
     <input type="submit" value="Добавить"/>
 </form>
 </body>

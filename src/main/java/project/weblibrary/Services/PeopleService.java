@@ -1,9 +1,11 @@
 package project.weblibrary.Services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.weblibrary.Entities.PersonEntity;
 import project.weblibrary.Repositories.PersonRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 
@@ -15,7 +17,20 @@ public class PeopleService {
         this.personRepository = personRepository;
     }
 
-    public void addPeople(PersonEntity personEntity){
+    public void addPerson(PersonEntity personEntity){
         personRepository.save(personEntity);
+    }
+
+    public List<PersonEntity> getPersons(){
+        return personRepository.findAll();
+    }
+
+    public PersonEntity getPersonById(Long id){
+        Optional<PersonEntity> personEntity = personRepository.findById(id);
+        return personEntity.get();
+    }
+
+    public void deletePersonById(Long id){
+        personRepository.deleteById(id);
     }
 }
